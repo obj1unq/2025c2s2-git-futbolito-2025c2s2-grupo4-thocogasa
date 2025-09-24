@@ -1,0 +1,14 @@
+import objetos.*
+import wollok.game.*
+
+
+
+describe "taquito" {
+  test "taquito" {
+        assert.equals(5, pelota.position().x())
+        lionel.avanzar()
+        lionel.avanzar()
+        lionel.taquito()
+        assert.equals(3, pelota.position().x())
+  }
+}
