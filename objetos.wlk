@@ -4,11 +4,12 @@ import wollok.game.*
 object lionel {
 	
 	var property position = game.at(3,5)
-	
+	var estadoDeCamiseta = titular
 	method image() {
-		return "lionel-titular.png"
+		//return "lionel-titular.png"
+		return "lionel-" + estadoDeCamiseta.nombreDeEstado() + ".png"
 	}
-
+//validacion self.error(lionel no esta en la posicion)
 	method retroceder() {
 		position = game.at(0.max(position.x() - 1), position.y()) 
 	}
@@ -16,11 +17,55 @@ object lionel {
 	method avanzar() {
 		position = game.at((game.width() - 1).min(position.x() + 1), position.y()) 
 	}
-	
+	method estadoDeCamiseta() {return estadoDeCamiseta }
+
+// el jugador se manda a si mismo como parametro
+//en vez de usar if hacemos doble ______ dispatch 
+	method cambiarEstadoDeCamiseta() {
+	  self.validarQueLionelEstaEnBordeIzquierdo()
+	  estadoDeCamiseta.cambiarAEstado(self)
+	} 
+	// aca el jugador dice que cambia al suṕlente/titular
+	method cambiarASuplente() {
+	  console.println(estadoDeCamiseta)
+	  estadoDeCamiseta = suplente 
+	  console.println(estadoDeCamiseta)
+	  
+	}
+	method cambiarATitular() {
+	  estadoDeCamiseta = titular
+	}
+	//crearemos Validar que solo se puede realizar si lionel está sobre el borde izquierdo (El x de la posición debe ser 0)
+
+	method validarQueLionelEstaEnBordeIzquierdo() {
+	  if(not (position.x() == 0)){
+		self.error("No esta en la izquierda")
+	  }
+
+	}
 }
 
+
+// crear objeto de estado de las camisetas con lionel 
+object titular{
+	method cambiarAEstado(jugador){
+		jugador.cambiarASuplente()
+	}
+	method nombreDeEstado() {
+	return "titular"
+  }
+}
+object suplente {
+  method nombreDeEstado() {
+	return "suplente"
+  }
+  method cambiarAEstado(jugador){
+		jugador.cambiarATitular()
+	}
+}
 
 object pelota {
 	const property image="pelota.png"
 	var property position = game.at(5,5)	
 }
+
