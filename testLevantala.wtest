@@ -1,0 +1,24 @@
+import objetos.*
+import game.*
+import pgmProgram.*
+
+describe "tests de levantarla"{ 
+    method initialize() {
+        game.cellSize(40)
+        game.width(15)
+    	game.height(10)
+    }
+
+
+    test "levantarla" { 
+        const origen = game.at(0,5)
+        assert.notThat(lionel.position()==pelota.position())
+        assert.throwsException({lionel.levantarla()})
+
+        lionel.buscarla()
+        assert.that(lionel.position()==pelota.position())
+        lionel.levantarla()
+         assert.equals(6, pelota.position().y())
+    }
+    
+}

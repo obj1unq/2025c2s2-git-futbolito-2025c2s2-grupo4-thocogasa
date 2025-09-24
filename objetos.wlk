@@ -17,6 +17,7 @@ object lionel {
 	method avanzar() {
 		position = game.at((game.width() - 1).min(position.x() + 1), position.y()) 
 	}
+
 	method estadoDeCamiseta() {return estadoDeCamiseta }
 
 // el jugador se manda a si mismo como parametro
@@ -41,6 +42,24 @@ object lionel {
 	  if(not (position.x() == 0)){
 		self.error("No esta en la izquierda")
 	  }
+	}
+	
+	method levantarla(){
+		self.validarPatear()
+		pelota.position( pelota.position().up(1))
+		game.schedule(2*1000, {
+			pelota.position( pelota.position().down(1))
+			}
+		)
+	}
+
+	method buscarla() {
+		position =  pelota.position()
+	}
+	
+	method validarPatear(){ 
+		if(  position!= pelota.position()){ 
+			self.error("no puedo patear")}
 
 	}
 }
@@ -66,6 +85,10 @@ object suplente {
 
 object pelota {
 	const property image="pelota.png"
-	var property position = game.at(5,5)	
+	var property position = game.at(5,5)
+
+	method irAlOrigen() {
+		position = game.at(0, position.y())
+	}	
 }
 
