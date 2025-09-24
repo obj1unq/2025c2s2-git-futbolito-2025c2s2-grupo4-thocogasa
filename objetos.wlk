@@ -44,6 +44,28 @@ object lionel {
 	  }
 	}
 	
+
+
+	method taquito(){
+		
+		self.validarPatear()
+		if(self.tieneEspacioParaTaquito()){
+			pelota.position().left(2)
+		} else{
+			pelota.position().x().min()
+		}
+	}
+
+	method validarPatear(){
+		if(!self.posesionDeLaPelota()){
+			self.error("No tiene la pelota")
+		}
+	}
+
+	method posesionDeLaPelota() = pelota.position() == self.position()
+
+	method tieneEspacioParaTaquito() = pelota.position.x() >= 2
+
 	method levantarla(){
 		self.validarPatear()
 		pelota.position( pelota.position().up(1))
@@ -57,11 +79,7 @@ object lionel {
 		position =  pelota.position()
 	}
 	
-	method validarPatear(){ 
-		if(  position!= pelota.position()){ 
-			self.error("no puedo patear")}
 
-	}
 }
 
 
