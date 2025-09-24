@@ -13,6 +13,7 @@ program futbolito{
 	keyboard.right().onPressDo({lionel.avanzar()})
 	keyboard.l().onPressDo({lionel.levantarla()})
 
+	keyboard.c().onPressDo({lionel.cambiarEstadoDeCamiseta()})
 	game.start()
 
 
