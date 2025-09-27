@@ -1,6 +1,7 @@
 import objetos.*
 import game.*
 
+
 describe "tests de pizarron"{ 
     method initialize() {
         game.cellSize(40)
@@ -11,9 +12,10 @@ describe "tests de pizarron"{
 
     test "ir al origen" {
         const origen = game.at(0,5)
-        assert.notEquals(origenal, pelota.position())
+        assert.notEquals(origen, pelota.position())
         pelota.irAlOrigen()
-        assert.equals(origen,pelota.position())
+        assert.equals(origen, pelota.position())
     }
+    
     
 }
