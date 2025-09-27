@@ -107,6 +107,8 @@ object pelota {
 
 	method irAlOrigen() {
 		position = game.at(0, position.y())
-	}	
+	}
+
+	
 }
 

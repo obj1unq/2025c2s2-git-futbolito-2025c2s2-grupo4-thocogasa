@@ -16,6 +16,12 @@ describe "tests de pizarron"{
         pelota.irAlOrigen()
         assert.equals(origen, pelota.position())
     }
+
+    test "buscarla" {
+        assert.notThat(lionel.posesionDeLaPelota())
+        lionel.buscarla()
+        assert.that(lionel.posesionDeLaPelota())
+    }
     
-    
+
 }
